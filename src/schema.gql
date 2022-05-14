@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CatFood {
+  id: String!
+  name: String!
+  cats: [Cat!]!
+}
+
+type Cat {
+  id: String
+  name: String!
+  age: String!
+  breed: String!
+  catFoods: [CatFood!]!
+}
+
+type Query {
+  cats: [Cat!]!
+}

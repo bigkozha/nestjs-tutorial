@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import 'dotenv/config';
 import { Cat } from './cats/entities/cat.entity';
 import { CatFood } from './cats/entities/catFood.entity';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -20,6 +23,10 @@ import { CatFood } from './cats/entities/catFood.entity';
       entities: [Cat, CatFood],
       synchronize: process.env.ISPRODUCTION === 'FALSE' ? true : false,
       migrations: ['src/migrations/*{.ts,.js}'],
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
   ],
   controllers: [AppController],
