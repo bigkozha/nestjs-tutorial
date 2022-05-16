@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Role } from '../roles/enums/role.enum';
 
 export type User = any;
 
@@ -9,6 +10,7 @@ export class UsersService {
       userId: 1,
       username: 'john',
       password: 'changeme',
+      roles: [Role.User],
     },
     {
       userId: 2,
@@ -18,6 +20,8 @@ export class UsersService {
   ];
 
   async findOne(username: string): Promise<User | undefined> {
-    return this.users.find((u) => u.username === username);
+    const result = this.users.find((u) => u.username === username);
+
+    return result;
   }
 }

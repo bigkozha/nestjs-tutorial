@@ -1,12 +1,5 @@
 import { UseGuards } from '@nestjs/common';
-import {
-  Resolver,
-  Query,
-  ResolveField,
-  Parent,
-  Args,
-  Int,
-} from '@nestjs/graphql';
+import { Resolver, Query } from '@nestjs/graphql';
 import { GqlAuthGuard } from '../auth/gql.guard';
 import { CatsService } from './cats.service';
 import { Cat } from './models/cat.model';
